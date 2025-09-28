@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <title>Gereja Bethany Indonesia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#01304F",
+              secondary: "#153C4D",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lugrasimo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(135deg, #01304f, #011929);
+      }
+
+      .lugrasimo-regular {
+        font-family: "Lugrasimo", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      * {
+        scrollbar-color: #f9f6ee #01304f;
+        scroll-behavior: smooth;
+      }
+
+      .scrollbar-blue {
+        scrollbar-color: #01304f #f9f6ee !important;
+      }
+
+      nav.nav-hidden {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .nav-link {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: all 0.2s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after {
+        width: 80%;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10.3px);
+        -webkit-backdrop-filter: blur(10.3px);
+      }
+
+      .glass-nav {
+        background: rgba(1, 48, 79, 0.4);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10.3px);
+        -webkit-backdrop-filter: blur(10.3px);
+      }
+
+      .neu-primary {
+        border-radius: 20px;
+        box-shadow: 5px 5px 15px #022037, -5px -5px 15px #054169;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .neu-primary:hover {
+        box-shadow: -5px -5px 15px #022037, 5px 5px 15px #054169;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .neu-inside {
+        border-radius: 20px;
+        box-shadow: inset 8px 8px 26px rgba(224, 221, 214, 1),
+          inset -8px -8px 26px rgba(255, 255, 255, 1), 0 0 0 rgba(0, 0, 0, 0);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .neu-inside:hover {
+        box-shadow: inset -8px -8px 26px #e0ddd6, inset 8px 8px 26px #ffffff;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .line-card {
+        position: relative;
+        display: flex;
+        place-content: center;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .line-card::before {
+        content: "";
+        position: absolute;
+        background-image: linear-gradient(180deg, #f9f6ee, #ede1c0);
+        animation: rotBGimg 8s linear infinite;
+        transition: all 0.3s linear;
+      }
+
+      @keyframes rotBGimg {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .line-card::after {
+        content: "";
+        position: absolute;
+        background: #012b3f;
+        background-image: linear-gradient(180deg, #011f30, #012b3f),
+          radial-gradient(circle at 50% 50%, #022536 0%, transparent 80%);
+        inset: 3px;
+        border-radius: 20px;
+      }
+
+      .card-bg-primary {
+        background: #012b3f;
+        background-image: linear-gradient(180deg, #011f30, #012b3f),
+          radial-gradient(circle at 50% 50%, #022536 0%, transparent 80%);
+      }
+
+      .jadwal-cta::after {
+        content: "";
+        border-radius: 10px !important;
+        transition: all 0.3s;
+      }
+
+      .jadwal-cta:hover::after {
+        content: "";
+        background: #f9f6ee !important;
+        transform: scale(2);
+        transition: all 0.3s ease;
+      }
+
+      .contact-svg {
+        transition: all 0.3s;
+        padding: 1rem;
+        height: 3.7rem;
+        width: 3.7rem;
+        border-radius: 100%;
+        color: #01304f;
+        fill: currentColor;
+        box-shadow: inset 0 0 20px rgba(1, 48, 79, 0.3),
+          inset 0 0 5px rgba(1, 48, 79, 0.5), 0 5px 5px rgba(1, 48, 79, 0.164);
+      }
+
+      .contact-text {
+        opacity: 0;
+        border-radius: 5px;
+        padding: 5px;
+        transition: all 0.3s;
+        color: #01304f;
+        background-color: rgba(255, 255, 255, 0.3);
+        position: absolute;
+        z-index: 9999;
+        box-shadow: inset 0 0 20px rgba(1, 48, 79, 0.3),
+          inset 0 0 5px rgba(1, 48, 79, 0.5), 0 5px 5px rgba(1, 48, 79, 0.164);
+      }
+
+      .iso-pro {
+        transition: 0.5s;
+      }
+      .iso-pro:hover a > .contact-svg {
+        transform: translate(15px, -15px);
+        border-radius: 100%;
+      }
+      .iso-pro:hover .contact-text {
+        opacity: 1;
+        transform: translate(25px, -2px) skew(-5deg);
+      }
+      .iso-pro:hover .contact-svg {
+        transform: translate(5px, -5px);
+      }
+      .iso-pro span {
+        opacity: 0;
+        position: absolute;
+        border-radius: 50%;
+        transition: all 0.3s;
+        height: 60px;
+        width: 60px;
+        box-shadow: inset 0 0 20px rgba(1, 48, 79, 0.3),
+          inset 0 0 5px rgba(1, 48, 79, 0.5), 0 5px 5px rgba(1, 48, 79, 0.164);
+      }
+      .iso-pro:hover span {
+        opacity: 1;
+      }
+      .iso-pro:hover span:nth-child(1) {
+        opacity: 0.2;
+      }
+      .iso-pro:hover span:nth-child(2) {
+        opacity: 0.4;
+        transform: translate(5px, -5px);
+      }
+      .iso-pro:hover span:nth-child(3) {
+        opacity: 0.6;
+        transform: translate(10px, -10px);
+      }
+
+      .contact-form input,
+      .contact-form select,
+      .contact-form select option,
+      .contact-form textarea,
+      .jadwal-card,
+      .article-card {
+        background: transparent;
+        box-shadow: inset 0 0 20px rgba(1, 48, 79, 0.3),
+          inset 0 0 5px rgba(1, 48, 79, 0.5), 0 5px 5px rgba(1, 48, 79, 0.164) !important;
+      }
+
+      .bg-white-blue {
+        /* background: linear-gradient(180deg, #DADEDB 10%, #bbc5c7 15%,#3F6277 20%, #01304F 30%) !important; */
+      }
+    </style>
+  </head>
+  <body class="">
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="glass-nav shadow-lg fixed w-full top-0 z-50 transition duration-300"
+    >
+      <div class="mx-auto px-4">
+        <div class="flex justify-between items-center w-full py-4">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+            >
+              <span class="text-[#F9F6EE] font-bold text-lg">B</span>
+            </div>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="#beranda"
+              class="nav-link rounded-2xl text-[#F9F6EE] px-5 py-4 font-medium"
+              >Beranda</a
+            >
+            <a
+              href="#tentang"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Tentang Kami</a
+            >
+            <a
+              href="#jadwal"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Jadwal</a
+            >
+            <a
+              href="#pelayanan"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Pelayanan</a
+            >
+            <a
+              href="#artikel"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Artikel</a
+            >
+            <a
+              href="#kesaksian"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Kesaksian</a
+            >
+            <a
+              href="#dokumentasi"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Dokumentasi</a
+            >
+            <a
+              href="#kontak"
+              class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+              >Kontak</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-[#F9F6EE] hover:text-primary"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4 glass">
+          <a
+            href="#beranda"
+            class="block text-center py-2 text-[#F9F6EE] hover:text-primary"
+            >Beranda</a
+          >
+          <a
+            href="#tentang"
+            class="block text-center py-2 text-[#F9F6EE] hover:text-primary"
+            >Tentang Kami</a
+          >
+          <a
+            href="#jadwal"
+            class="block text-center py-2 text-[#F9F6EE] hover:text-primary"
+            >Jadwal</a
+          >
+          <a
+            href="#pelayanan"
+            class="block py-2 text-center text-[#F9F6EE] hover:text-primary"
+            >Pelayanan</a
+          >
+          <a
+            href="#artikel"
+            class="block text-center py-2 text-[#F9F6EE] hover:text-primary"
+            >Artikel</a
+          >
+          <a
+            href="#kesaksian"
+            class="block py-2 text-[#F9F6EE] text-center hover:text-primary"
+            >Kesaksian</a
+          >
+          <a
+            href="#dokumentasi"
+            class="block py-2 text-[#F9F6EE] text-center hover:text-primary"
+            >Dokumentasi</a
+          >
+          <a
+            href="#kontak"
+            class="block py-2 text-center text-[#F9F6EE] hover:text-primary"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section / Beranda -->
+    <section id="beranda" class="relative h-screen text-[#F9F6EE]">
+      <video
+        class="absolute top-0 left-0 w-full h-full object-cover"
+        src="asset/hero-video.webm"
+        autoplay
+        loop
+        muted
+      ></video>
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-black opacity-60"
+      ></div>
+      <div class="relative max-w-screen mx-auto px-4 py-20">
+        <div
+          class="flex flex-col items-center justify-center h-screen md:block"
+        >
+          <h1
+            class="lugrasimo-regular text-center text-[3rem] mb-10 md:mb-0 md:text-[10vw] max-w-full break-words font-bold"
+          >
+            GBI Narwastu<br />Mujizat
+          </h1>
+          <p class="relative text-xl md:text-2xl mt-4 mb-8 z-[2] text-center">
+            "Jadilah pribadi yang dapat dipercaya oleh Tuhan"
+          </p>
+
+          <div
+            class="relative flex flex-col md:flex-row gap-4 justify-center z-[2]"
+          >
+            <a
+              href="#jadwal"
+              class="line-card jadwal-cta before:w-[120%] before:h-[60%] after:!inset-[2px] text-[#F9F6EE] hover:text-[#01304F] px-8 py-3 rounded-[10px] font-semibold transition-all duration-300"
+            >
+              <p class="z-[1]">Jadwal Ibadah</p>
+            </a>
+            <a
+              href="#artikel"
+              class="border-2 text-center border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary hover:bg-white transition"
+            >
+              Artikel Terbaru
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Access Cards -->
+    <section class="py-12 bg-[#F9F6EE]">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="neu-inside p-6 rounded-lg text-center transition transition-all duration-500"
+          >
+            <div
+              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-[#F9F6EE]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-primary">
+              Renungan Harian
+            </h3>
+            <p class="text-primary">
+              Firman Tuhan untuk merenungkan kehidupan sehari-hari
+            </p>
+          </div>
+
+          <div
+            class="neu-inside p-6 rounded-lg text-center transition transition-all duration-500"
+          >
+            <div
+              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-[#F9F6EE]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-primary">
+              Jadwal Ibadah
+            </h3>
+            <p class="text-primary">
+              Doa Fajar setiap hari 03:45 WIB
+              <br />Doa Malam Senin - Jumat <br />YTG setiap Sabtu 16:30 WIB
+            </p>
+          </div>
+
+          <div
+            class="neu-inside p-6 rounded-lg text-center transition transition-all duration-500"
+          >
+            <div
+              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-[#F9F6EE]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-primary">Kesaksian</h3>
+            <p class="text-primary">
+              Bagikan dan dengarkan karya Tuhan dalam hidup jemaat
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="tentang" class="py-16 bg-white-blue">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#F9F6EE]"
+        >
+          Tentang Kami
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h3 class="text-2xl font-semibold mb-6 text-[#F9F6EE]">
+              Sejarah Gereja
+            </h3>
+            <p class="text-[#F9F6EE] leading-relaxed mb-4">
+              Gereja Bethany Indonesia berdiri sejak
+              <strong>10 Agustus 2004</strong> dan telah melayani selama 21
+              tahun. Gereja ini didirikan dengan visi untuk menjadi tempat di
+              mana setiap pribadi dapat bertumbuh menjadi individu yang dapat
+              dipercaya oleh Tuhan.
+            </p>
+            <p class="text-[#F9F6EE] leading-relaxed">
+              Selama perjalanan pelayanan, gereja terus berkembang dalam misi
+              penyebaran Firman Tuhan dan pembinaan jemaat, khususnya generasi
+              muda, agar bertumbuh dalam Kristus.
+            </p>
+          </div>
+          <div
+            class="line-card before:w-[90%] before:h-[130%] glass p-8 transition-all duration-300 rounded-[20px] shadow-lg"
+          >
+            <div class="z-[1]">
+              <h4 class="text-xl text-[#F9F6EE] font-semibold mb-4 text-center">
+                Gembala Sidang
+              </h4>
+              <div class="text-center mb-4">
+                <div
+                  class="w-32 h-32 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center"
+                >
+                  <span class="text-[#F9F6EE] text-4xl font-bold">DH</span>
+                </div>
+                <h5 class="text-lg text-[#F9F6EE] font-semibold">
+                  Pdt. Dr. David Harahap, S.E, M.Th
+                </h5>
+              </div>
+              <p class="text-[#F9F6EE] text-center text-sm">
+                Melayani dengan dedikasi tinggi dalam pengajaran, khotbah, dan
+                pembinaan jemaat dengan fokus pada pertumbuhan spiritual yang
+                mendalam.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visi & Misi -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="card-bg-primary p-8 rounded-[20px] shadow-lg">
+            <div class="z-[1]">
+              <h3 class="text-2xl font-semibold mb-4 text-[#F9F6EE]">Visi</h3>
+              <p class="text-[#F9F6EE] text-lg font-medium">
+                "Jadilah pribadi yang dapat dipercaya oleh Tuhan"
+              </p>
+            </div>
+          </div>
+          <div class="card-bg-primary p-8 rounded-[20px] shadow-lg">
+            <div class="z-[1]">
+              <h3 class="text-2xl font-semibold mb-4 text-[#F9F6EE]">Misi</h3>
+              <ul class="text-[#F9F6EE] space-y-2">
+                <li>• Berakar didalam Firman (Kolose 2:7)</li>
+                <li>• Bertumbuh Di dalam Firman (Kolose 1 : 10)</li>
+                <li>• Menghasilkan Buah yang Segar (Mazmur 92:15)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kerinduan 5 Tahun -->
+        <div class="text-[#F9F6EE] p-8 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-8 text-center">
+            Kerinduan 5 Tahun ke Depan
+          </h3>
+          <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div class="neu-primary p-2">
+              <div
+                class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold mb-2">Perluasan Misi</h4>
+              <p class="text-sm">Menjangkau lebih banyak jiwa untuk Kristus</p>
+            </div>
+            <div class="neu-primary p-2">
+              <div
+                class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold mb-2">Lintas Agama & Budaya</h4>
+              <p class="text-sm">Menjangkau berbagai latar belakang</p>
+            </div>
+            <div class="neu-primary p-2">
+              <div
+                class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <h4 class="font-semibold mb-2">Kesatuan Bangsa</h4>
+              <p class="text-sm">Berperan dalam persatuan Indonesia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jadwal & Acara -->
+    <section id="jadwal" class="py-16">
+      <div class="w-[90%] mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#F9F6EE]"
+        >
+          Jadwal & Acara
+        </h2>
+
+        <!-- <div class="grid md:grid-cols-2 gap-8"> -->
+        <!-- Jadwal Rutin -->
+        <div class="relative bg-[#F9F6EE] p-8 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-6 text-primary">Jadwal Rutin</h3>
+          <div
+            class="space-y-4 scrollable overflow-y-scroll max-h-screen pr-4 scrollbar-blue"
+          >
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold"
+                  >Senin</span
+                >
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">
+                  Doa Fajar Online (via Zoom)
+                </h4>
+                <p class="text-primary">03:45 - 04:45 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">
+                  Doa Malam Online (via Zoom)
+                </h4>
+                <p class="text-primary">21:00 - 21:30 WIB</p>
+              </div>
+            </div>
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold"
+                  >Selasa</span
+                >
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">
+                  Doa Fajar Online (via Zoom)
+                </h4>
+                <p class="text-primary">03:45 - 04:45 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">Ruang Doa Pemulihan</h4>
+                <p class="text-primary">11:00 - 12:00 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">
+                  Doa Malam Online (via Zoom)
+                </h4>
+                <p class="text-primary">21:00 - 21:30 WIB</p>
+              </div>
+            </div>
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold">Rabu</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">
+                  Doa Fajar Online (via Zoom)
+                </h4>
+                <p class="text-primary">03:45 - 04:45 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">Ruang Doa Pemulihan</h4>
+                <p class="text-primary">11:00 - 12:00 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">Doa Malam</h4>
+                <p class="text-primary">19:00 - 21:00 WIB</p>
+              </div>
+            </div>
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold"
+                  >Kamis</span
+                >
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">
+                  Doa Fajar Online (via Zoom)
+                </h4>
+                <p class="text-primary">03:45 - 04:45 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">Ruang Doa Pemulihan</h4>
+                <p class="text-primary">11:00 - 12:00 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">
+                  Doa Malam Online (via Zoom)
+                </h4>
+                <p class="text-primary">21:00 - 21:30 WIB</p>
+              </div>
+            </div>
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold"
+                  >Jumat</span
+                >
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">
+                  Doa Fajar Online (via Zoom)
+                </h4>
+                <p class="text-primary">03:45 - 04:45 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">Ruang Doa Pemulihan</h4>
+                <p class="text-primary">11:00 - 12:00 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">
+                  Doa Malam Online (via Zoom)
+                </h4>
+                <p class="text-primary">21:00 - 21:30 WIB</p>
+              </div>
+            </div>
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold"
+                  >Sabtu</span
+                >
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">
+                  Doa Fajar Online (via Zoom)
+                </h4>
+                <p class="text-primary">03:45 - 04:45 WIB</p>
+                <br />
+                <h4 class="font-semibold text-primary">
+                  Ibadah Youth True Generation
+                </h4>
+                <p class="text-primary">16:30 - 18:30 WIB</p>
+              </div>
+            </div>
+            <div class="jadwal-card flex items-center p-4 rounded-lg shadow-sm">
+              <div
+                class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-[#F9F6EE] text-[0.8rem] font-bold"
+                  >Minggu</span
+                >
+              </div>
+              <div>
+                <h4 class="font-semibold text-primary">Ibadah Raya</h4>
+                <p class="text-primary">10:00 - 12:00 WIB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Khusus -->
+        <!-- <div class="bg-primary text-[#F9F6EE] p-8 rounded-lg">
+            <h3 class="text-2xl font-semibold mb-6">Event Khusus</h3>
+            <div class="space-y-6">
+              <div class="border-l-4 border-white pl-4">
+                <h4 class="font-semibold text-lg">
+                  Kebaktian Kebangunan Rohani (KKR)
+                </h4>
+                <p class="text-blue-100">
+                  Event berkala untuk pembaharuan spiritual jemaat
+                </p>
+              </div>
+              <div class="border-l-4 border-white pl-4">
+                <h4 class="font-semibold text-lg">Retreat Jemaat</h4>
+                <p class="text-blue-100">
+                  Perenungan bersama dalam suasana yang tenang
+                </p>
+              </div>
+              <div class="border-l-4 border-white pl-4">
+                <h4 class="font-semibold text-lg">Seminar Rohani</h4>
+                <p class="text-blue-100">
+                  Pembelajaran mendalam tentang iman Kristen
+                </p>
+              </div>
+              <div class="border-l-4 border-white pl-4">
+                <h4 class="font-semibold text-lg">Camp Anak Muda</h4>
+                <p class="text-blue-100">
+                  Pembinaan khusus generasi muda dalam Kristus
+                </p>
+              </div>
+            </div>
+          </div> -->
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <!-- Pelayanan -->
+    <section id="pelayanan" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#F9F6EE]"
+        >
+          Pelayanan
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <div
+            class="text-[#F9F6EE] card-bg-primary p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <div
+              class="w-16 h-16 z-[1] bg-primary rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-[#F9F6EE]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl z-[1] font-semibold mb-3">
+              Pengajaran & Khotbah
+            </h3>
+            <p class="mb-4 z-[1]">
+              Materi berkualitas dalam format audio, video, dan teks untuk
+              pertumbuhan spiritual
+            </p>
+            <a href="#artikel" class="font-semibold hover:underline z-[1]">
+              Lihat Materi →
+            </a>
+          </div>
+
+          <div
+            class="card-bg-primary p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition text-[#F9F6EE]"
+          >
+            <div
+              class="w-16 h-16 z-[1] bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-[#F9F6EE]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl z-[1] font-semibold mb-3">Pendalaman Alkitab</h3>
+            <p class="mb-4 z-[1]">
+              Studi Alkitab online dan offline untuk pemahaman Firman yang lebih
+              mendalam
+            </p>
+            <a href="#kontak" class="font-semibold hover:underline z-[1]">
+              Ikut PA →
+            </a>
+          </div>
+
+          <div
+            class="card-bg-primary text-[#F9F6EE] p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition"
+          >
+            <div
+              class="w-16 h-16 z-[1] bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-[#F9F6EE]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 z-[1]">Kesaksian Jemaat</h3>
+            <p class="mb-4 z-[1]">
+              Platform untuk berbagi pengalaman dan karya Tuhan dalam kehidupan
+              sehari-hari
+            </p>
+            <a href="#kesaksian" class="font-semibold hover:underline z-[1]">
+              Baca Kesaksian →
+            </a>
+          </div>
+        </div>
+
+        <!-- Fokus Anak Muda -->
+        <div class="bg-[#f9f6ee] p-8 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold mb-6 text-center text-primary">
+            Fokus Pelayanan Anak Muda
+          </h3>
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 class="text-xl font-semibold mb-4 text-primary">
+                Pembinaan Karakter Kristus
+              </h4>
+              <ul class="space-y-2 text-primary">
+                <li>• Pembentukan karakter sesuai nilai-nilai Kristus</li>
+                <li>• Penguatan identitas sebagai anak Tuhan</li>
+                <li>• Latihan kepemimpinan rohani</li>
+                <li>• Mentoring personal dan kelompok</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-4 text-primary">
+                Berani Bersaksi
+              </h4>
+              <ul class="space-y-2 text-primary">
+                <li>• Pelatihan evangelisasi modern</li>
+                <li>• Workshop komunikasi iman</li>
+                <li>• Praktik bersaksi di era digital</li>
+                <li>• Misi sosial dan pelayanan komunitas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artikel & Renungan -->
+    <section id="artikel" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#F9F6EE]"
+        >
+          Artikel & Renungan
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Artikel Gereja -->
+          <div class="bg-[#F9F6EE] p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 text-primary">
+              Artikel Gereja
+            </h3>
+            <div
+              class="scrollable max-h-screen space-y-4 pr-4 overflow-y-scroll scrollbar-blue"
+            >
+              <article class="article-card p-4 rounded shadow-sm text-primary">
+                <h4 class="font-semibold mb-2">
+                  Menjadi Pribadi yang Dipercaya Tuhan
+                </h4>
+                <p class="text-sm mb-2">25 September 2024</p>
+                <p class="text-sm">
+                  Bagaimana kita dapat membangun integritas dan kepercayaan
+                  dalam kehidupan sehari-hari...
+                </p>
+                <a
+                  href="#"
+                  class="text-primary text-sm font-medium hover:underline"
+                  >Baca Selengkapnya</a
+                >
+              </article>
+              <article class="article-card p-4 rounded shadow-sm text-primary">
+                <h4 class="font-semibold mb-2">Peran Gereja di Era Digital</h4>
+                <p class="text-sm mb-2">20 September 2024</p>
+                <p class="text-sm">
+                  Tantangan dan peluang gereja dalam melayani di zaman teknologi
+                  modern...
+                </p>
+                <a
+                  href="#"
+                  class="text-primary text-sm font-medium hover:underline"
+                  >Baca Selengkapnya</a
+                >
+              </article>
+              <article class="article-card p-4 rounded shadow-sm text-primary">
+                <h4 class="font-semibold mb-2">
+                  Membangun Persatuan dalam Perbedaan
+                </h4>
+                <p class="text-sm mb-2">15 September 2024</p>
+                <p class="text-sm">
+                  Pentingnya kesatuan bangsa dalam keberagaman budaya dan
+                  agama...
+                </p>
+                <a href="#" class="text-sm font-medium hover:underline"
+                  >Baca Selengkapnya</a
+                >
+              </article>
+
+              <article class="article-card p-4 rounded shadow-sm text-primary">
+                <h4 class="font-semibold mb-2">
+                  Membangun Persatuan dalam Perbedaan
+                </h4>
+                <p class="text-sm mb-2">15 September 2024</p>
+                <p class="text-sm">
+                  Pentingnya kesatuan bangsa dalam keberagaman budaya dan
+                  agama...
+                </p>
+                <a href="#" class="text-sm font-medium hover:underline"
+                  >Baca Selengkapnya</a
+                >
+              </article>
+            </div>
+          </div>
+
+          <!-- Renungan -->
+          <div class="bg-primary text-[#F9F6EE] p-6 rounded-lg text-[#F9F6EE]">
+            <h3 class="text-xl font-semibold mb-4">Renungan Mingguan</h3>
+            <div
+              class="scrollable space-y-4 max-h-screen pr-4 overflow-y-scroll"
+            >
+              <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
+                <h4 class="font-semibold mb-2">Hidup dalam Kebenaran</h4>
+                <p class="text-sm text-blue-100 mb-2">Yohanes 8:32</p>
+                <p class="text-sm">
+                  "Dan kamu akan mengetahui kebenaran, dan kebenaran itu akan
+                  memerdekakan kamu."
+                </p>
+              </div>
+              <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
+                <h4 class="font-semibold mb-2">Menjadi Terang Dunia</h4>
+                <p class="text-sm text-blue-100 mb-2">Matius 5:14</p>
+                <p class="text-sm">
+                  "Kamu adalah terang dunia. Kota yang terletak di atas gunung
+                  tidak mungkin tersembunyi."
+                </p>
+              </div>
+              <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
+                <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
+                <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
+                <p class="text-sm">
+                  "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
+                </p>
+              </div>
+              <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
+                <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
+                <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
+                <p class="text-sm">
+                  "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
+                </p>
+              </div>
+              <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
+                <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
+                <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
+                <p class="text-sm">
+                  "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
+                </p>
+              </div>
+              <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
+                <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
+                <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
+                <p class="text-sm">
+                  "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dialog Iman -->
+          <div class="bg-green-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 text-green-800">
+              Dialog Iman
+            </h3>
+            <div class="space-y-4">
+              <div class="bg-white p-4 rounded shadow-sm">
+                <h4 class="font-semibold mb-2 text-green-700">
+                  Menjadi Saksi Kristus di Era Digital
+                </h4>
+                <p class="text-sm text-primary mb-2">
+                  Bagaimana cara efektif bersaksi melalui media sosial dan
+                  teknologi modern?
+                </p>
+                <span
+                  class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded"
+                  >Diskusi Aktif</span
+                >
+              </div>
+              <div class="bg-white p-4 rounded shadow-sm">
+                <h4 class="font-semibold mb-2 text-green-700">
+                  Kesatuan Bangsa dan Iman
+                </h4>
+                <p class="text-sm text-primary mb-2">
+                  Peran umat Kristiani dalam menjaga persatuan Indonesia di
+                  tengah keberagaman.
+                </p>
+                <span
+                  class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded"
+                  >Topik Minggu Ini</span
+                >
+              </div>
+              <div class="bg-white p-4 rounded shadow-sm">
+                <h4 class="font-semibold mb-2 text-green-700">
+                  Iman di Tempat Kerja
+                </h4>
+                <p class="text-sm text-primary mb-2">
+                  Menerapkan nilai-nilai Kristiani dalam lingkungan kerja
+                  profesional.
+                </p>
+                <span
+                  class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded"
+                  >Coming Soon</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kesaksian -->
+    <section id="kesaksian" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#F9F6EE]"
+        >
+          Kesaksian Jemaat
+        </h2>
+        <p class="text-center text-[#F9F6EE] mb-12">
+          Bagikan dan dengarkan karya Tuhan yang luar biasa dalam hidup kita
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8 text-[#F9F6EE]">
+          <div class="card-bg-primary p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="font-bold">SR</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Sari Rahayu</h4>
+                <p class="text-sm">Jemaat sejak 2018</p>
+              </div>
+            </div>
+            <h5 class="font-semibold mb-3">
+              Pertolongan Tuhan dalam Masa Sulit
+            </h5>
+            <p class="text-sm leading-relaxed mb-4">
+              "Ketika saya mengalami kesulitan keuangan yang sangat berat, saya
+              hampir putus asa. Namun melalui doa dan dukungan jemaat, Tuhan
+              memberikan jalan keluar yang tidak pernah saya bayangkan
+              sebelumnya. Pekerjaan baru datang tepat pada waktu yang Tuhan
+              tentukan."
+            </p>
+            <span class="text-xs text-primary bg-blue-50 px-3 py-1 rounded-full"
+              >Berkat Finansial</span
+            >
+          </div>
+
+          <div class="card-bg-primary p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="font-bold">AP</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Andre Panjaitan</h4>
+                <p class="text-sm">Anak Muda GBI</p>
+              </div>
+            </div>
+            <h5 class="font-semibold mb-3">Panggilan Melayani</h5>
+            <p class="text-sm leading-relaxed mb-4">
+              "Dari yang awalnya malu bersaksi, melalui pembinaan di GBI saya
+              belajar berani menyampaikan iman kepada teman-teman. Sekarang saya
+              aktif di pelayanan anak muda dan merasakan sukacita yang luar
+              biasa dalam melayani Tuhan."
+            </p>
+            <span class="text-xs text-primary bg-blue-50 px-3 py-1 rounded-full"
+              >Pertumbuhan Iman</span
+            >
+          </div>
+
+          <div class="card-bg-primary p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="font-bold">ML</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Maria Lumban Gaol</h4>
+                <p class="text-sm">Keluarga GBI</p>
+              </div>
+            </div>
+            <h5 class="font-semibold mb-3">Kesembuhan dan Pemulihan</h5>
+            <p class="text-sm leading-relaxed mb-4">
+              "Suami saya didiagnosa penyakit serius, tapi melalui doa bersama
+              di gereja dan pengajaran Pendeta David, kami belajar mempercayakan
+              semuanya kepada Tuhan. Hari ini suami saya sudah sembuh total dan
+              keluarga kami semakin kuat dalam iman."
+            </p>
+            <span class="text-xs text-primary bg-blue-50 px-3 py-1 rounded-full"
+              >Kesembuhan</span
+            >
+          </div>
+
+          <div class="card-bg-primary p-6 rounded-lg shadow-lg">
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="font-bold">DS</span>
+              </div>
+              <div>
+                <h4 class="font-semibold">Daniel Simanjuntak</h4>
+                <p class="text-sm">Pemuda GBI</p>
+              </div>
+            </div>
+            <h5 class="font-semibold mb-3">Transformasi Hidup</h5>
+            <p class="text-sm leading-relaxed mb-4">
+              "Dulu saya adalah pribadi yang suka marah dan sulit bergaul.
+              Setelah bergabung dengan komunitas anak muda di GBI, karakter saya
+              berangsur berubah. Sekarang saya bisa menjadi pribadi yang lebih
+              sabar dan bisa dipercaya oleh orang-orang di sekitar."
+            </p>
+            <span class="text-xs text-primary bg-blue-50 px-3 py-1 rounded-full"
+              >Karakter</span
+            >
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            class="bg-primary text-[#F9F6EE] px-8 py-3 rounded-lg font-semibold hover:bg-[#F9F6ee] hover:text-primary transition mr-4"
+          >
+            Bagikan Kesaksian
+          </button>
+          <button
+            class="border-2 border-[#F9F6EE] text-[#F9F6EE] px-8 py-3 rounded-lg font-semibold hover:bg-[#F9F6EE] hover:text-primary transition"
+          >
+            Lihat Semua Kesaksian
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dokumentasi -->
+    <section id="dokumentasi" class="py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#F9F6EE]"
+        >
+          Dokumentasi
+        </h2>
+        <p class="text-center text-[#F9F6EE] mb-12">
+          Galeri foto, video, dan rekaman khotbah kegiatan gereja
+        </p>
+
+        <!-- Tab Navigation -->
+        <div
+          class="flex flex-wrap justify-center mb-8 bg-[#F9F6EE] rounded-lg p-2"
+        >
+          <button
+            class="tab-btn active bg-primary text-[#F9F6EE] px-6 py-2 rounded-lg font-semibold mr-2 mb-2 transition-all duration-300"
+            data-tab="galeri"
+          >
+            Galeri Foto
+          </button>
+          <button
+            class="tab-btn text-primary px-6 py-2 rounded-lg font-semibold mr-2 mb-2 hover:bg-[#E2E0D8] transition-all duration-300"
+            data-tab="video"
+          >
+            Video
+          </button>
+          <button
+            class="tab-btn text-primary px-6 py-2 rounded-lg font-semibold mr-2 mb-2 hover:bg-[#E2E0D8] transition-all duration-300"
+            data-tab="khotbah"
+          >
+            Rekaman Khotbah
+          </button>
+        </div>
+
+        <!-- Galeri Foto -->
+        <div id="galeri" class="tab-content">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+            <img
+              class="w-full h-full object-cover rounded-lg"
+              src="asset/profile-photo.webp"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- Video Content -->
+        <div id="video" class="tab-content hidden">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-[#F9F6EE] rounded-lg p-6">
+              <div
+                class="bg-[#F9F6EE] aspect-video rounded-lg mb-4 flex items-center justify-center"
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/XLqQUGnUInQ?si=KK1VvH4qRnYxfVxC"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h4 class="font-semibold mb-2 text-primary">
+                TERHARU! | Kaleidoskop HUT 21 Tahun
+              </h4>
+              <p class="text-sm text-primary">
+                21 tahun kasih karunia yang tak pernah habis
+              </p>
+            </div>
+            <div class="bg-[#F9F6EE] rounded-lg p-6">
+              <div
+                class="bg-[#F9F6EE] aspect-video rounded-lg mb-4 flex items-center justify-center"
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/CZ1jvKxmLNM?si=5Ki9hJz_reSjc4ZZ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h4 class="font-semibold mb-2 text-primary">
+                Gereja Bukan Gedungnya, Tetapi Orangnya
+              </h4>
+              <p class="text-sm text-primary">
+                Kita adalah gereja yang bergerak, bukan hanya berkumpul, tapi
+                juga membawa kasih ke luar
+              </p>
+            </div>
+            <div class="bg-[#F9F6EE] rounded-lg p-6">
+              <div
+                class="bg-[#F9F6EE] aspect-video rounded-lg mb-4 flex items-center justify-center"
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/UbqtcUlls9w?si=O9OcJQnfxj6Abj0s"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h4 class="font-semibold mb-2 text-primary">Kaleidoskop 2024</h4>
+              <p class="text-sm text-primary">
+                Rekap Kaleidoskop GBI Narwastu Mujizat Tahun 2024
+              </p>
+            </div>
+
+            <div class="bg-[#F9F6EE] rounded-lg p-6">
+              <div
+                class="bg-[#F9F6EE] aspect-video rounded-lg mb-4 flex items-center justify-center"
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/VvRmzcPoDUQ?si=2fAXV2YNxceblpIK"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <h4 class="font-semibold mb-2 text-primary">Rekap Natal 2024</h4>
+              <p class="text-sm text-primary">
+                Rekap Natal GBI Narwastu Mujizat Tahun 2024
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rekaman Khotbah -->
+        <div id="khotbah" class="tab-content hidden">
+          <div class="space-y-6">
+            <div class="bg-[#F9F6EE] p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4">Khotbah Terbaru</h4>
+              <div class="space-y-4 scrollable overflow-y-scroll max-h-[40vh] pr-4 scrollbar-blue">
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/G3sFlwnTm0Y?si=C-245z9SUPWTbENi" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Raya 28 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdt. Dr. David Harahap, S.E., M.Th.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">1:52:14</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/Yg5trDpWqUc?si=jVEhkxtaIXeLFF0Y" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Raya 20 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdp. Daniel Victorious P. H., M.Th.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">2:23:14</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/Se-hrSEpgVs?si=CmjdC3Jfz7AE8qxg" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Doa Malam 17 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdt. Dr. David Harahap, S.E., M.Th.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">1:46:04</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/jDuh6n6edCI?si=ZdfTRA0bDlirItG6" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Raya 14 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdm. Celly Maria sihombing, S.Pd.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">1:55:15</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/1rzsBcrLOz0?si=0KVbth5a-iDPmi2n" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Youth True Generation 13 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      SDR. GABRIEL J.P. HARAHAP
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">1:39:51</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/_ycIFVXnslw?si=OrSGZ5f9MLgScPkp" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Doa Malam 10 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdm. Celly Maria Sihombing, S.Pd.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">1:59:28</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/DaoRzQNB0wg?si=m3RChv-Fyd0QJLhT" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Raya 7 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdp. Sigit Henny Yuana, S.E.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">2:11:12</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/IQxehJNpn_A?si=rCY_GOjK0X9JK65S" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Raya 3 September 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdp. Daniel Victorius, S.Th.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">1:44:11</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/31N9soqK-E4?si=BP4BzjJehUtTQggB" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Perayaan Ulang Tahun GBI Narwastu Mujizat Ke-21
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdt. Dr. David Harahap, S.E., M.Th.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">2:12:20</div>
+                </div>
+
+                <div
+                  class="article-card p-4 rounded-lg shadow-sm flex items-center"
+                >
+                  <a
+                    href="https://www.youtube.com/live/wvmDkumi2Jg?si=kCWremDb30TSgx3n" target="_blank"
+                    class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mr-4"
+                  >
+                    <svg
+                      class="w-6 h-6 text-[#F9F6EE]"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                  <div class="flex-1">
+                    <h5 class="font-semibold text-primary">
+                      Ibadah Raya 24 Agustus 2025
+                    </h5>
+                    <p class="text-sm text-primary">
+                      Pdp. Daniel Victorious P.H., S.Th.
+                    </p>
+                  </div>
+                  <div class="text-sm text-primary">2:01:29</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-primary text-[#F9F6EE] p-6 rounded-lg">
+              <h4 class="text-xl font-semibold mb-4">
+                Media Sosial & Streaming
+              </h4>
+              <div class="grid md:grid-cols-3 gap-4">
+                <a
+                  href="#"
+                  class="bg-white bg-opacity-20 p-4 rounded-lg text-center hover:bg-opacity-30 transition"
+                >
+                  <svg
+                    class="w-8 h-8 mx-auto mb-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 7.20 0 12 0 12s0 4.80.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 16.80 24 12 24 12s0-4.80-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                    />
+                  </svg>
+                  <h5 class="font-semibold">YouTube</h5>
+                  <p class="text-sm">Live Streaming</p>
+                </a>
+                <a
+                  href="#"
+                  class="bg-white bg-opacity-20 p-4 rounded-lg text-center hover:bg-opacity-30 transition"
+                >
+                  <svg
+                    class="w-8 h-8 mx-auto mb-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                    />
+                  </svg>
+                  <h5 class="font-semibold">Facebook</h5>
+                  <p class="text-sm">Live & Updates</p>
+                </a>
+                <a
+                  href="#"
+                  class="bg-white bg-opacity-20 p-4 rounded-lg text-center hover:bg-opacity-30 transition"
+                >
+                  <svg
+                    class="w-8 h-8 mx-auto mb-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.083.402-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"
+                    />
+                  </svg>
+                  <h5 class="font-semibold">Instagram</h5>
+                  <p class="text-sm">Daily Updates</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak & Lokasi -->
+    <section id="kontak" class="py-16 bg-[#F9F6EE]">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary"
+        >
+          Kontak & Lokasi
+        </h2>
+        <p class="text-center text-primary mb-12">
+          Hubungi kami untuk doa, pertanyaan, atau pelayanan
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Informasi Kontak -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-6 text-primary">
+              Informasi Kontak
+            </h3>
+            <div class="mb-8 flex">
+              <!-- Card Container -->
+              <div
+                class="contact-card max-w-fit rounded-[15px] flex flex-col justify-center items-center gap-4 backdrop-blur-lg shadow-inner shadow-black/20 transition duration-500 hover:bg-white/5 p-4"
+              >
+                <ul
+                  class="flex flex-col gap-4 items-center justify-center list-none"
+                >
+                  <!-- Lokasi -->
+                  <li class="iso-pro relative cursor-pointer">
+                    <span></span><span></span><span></span>
+                    <a
+                      href="https://maps.app.goo.gl/oSMJc5yYbKWj4D4v8"
+                      target="_blank"
+                    >
+                      <svg
+                        class="contact-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 384 512"
+                      >
+                        <path
+                          d="M168 0C75.1 0 0 75.1 0 168c0 87.6 151.6 327.4 160.3 341.1c3.2 5 8.9 7.9 15 7.9s11.8-3 15-7.9C192.4 495.4 344 255.6 344 168C344 75.1 268.9 0 176 0h-8zM176 240c-39.8 0-72-32.2-72-72s32.2-72 72-72s72 32.2 72 72s-32.2 72-72 72z"
+                        />
+                      </svg>
+                    </a>
+                    <div class="contact-text">Lokasi</div>
+                  </li>
+
+                  <!-- WhatsApp -->
+                  <li class="iso-pro relative cursor-pointer">
+                    <span></span><span></span><span></span>
+                    <a
+                      href="https://api.whatsapp.com/send/?phone=%2B6281803031420&text&type=phone_number&app_absent=0"
+                      target="_blank"
+                    >
+                      <svg
+                        class="contact-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                      >
+                        <path
+                          d="M380.9 97.1C339 55.1 283.2 32 224 32C100.3 32 0 132.3 0 256c0 45 11.9 88.7 34.5 127.1L0 480l101.9-33.4C139.6 466.1 181.4 480 224 480c123.7 0 224-100.3 224-224c0-59.2-23.1-115-67.1-158.9zM224 438.7c-40.1 0-79.3-11.7-113-33.7l-8.1-5.2l-60.4 19.8l20-58.6l-5.3-8.5C40.3 320.7 29.3 288.9 29.3 256c0-107.5 87.2-194.7 194.7-194.7c52 0 100.8 20.3 137.5 57s57 85.5 57 137.5c0 107.5-87.2 194.7-194.7 194.7zM308.2 318.8c-5.3-2.6-31.4-15.4-36.3-17.1c-4.9-1.8-8.4-2.6-12 2.6s-13.7 17.1-16.8 20.6c-3.1 3.5-6.2 4-11.5 1.3c-31.4-15.7-52-28-72.9-63.6c-5.5-9.5 5.5-8.8 15.7-29.1c1.8-3.5 .9-6.6-.4-9.2c-1.3-2.6-12-29.1-16.4-39.9c-4.3-10.4-8.7-9-12-9c-3.1 0-6.6-.4-10.1-.4c-3.5 0-9.2 1.3-14.1 6.6c-4.9 5.3-18.7 18.3-18.7 44.7c0 26.4 19.1 51.9 21.8 55.4c2.6 3.5 37.6 57.4 91.2 80.5c12.7 5.5 22.6 8.7 30.4 11.2c12.7 4 24.3 3.5 33.5 2.2c10.2-1.5 31.4-12.9 35.8-25.4c4.4-12.4 4.4-23.1 3.1-25.4c-1.3-2.2-4.9-3.5-10.2-6.2z"
+                        />
+                      </svg>
+                    </a>
+                    <div class="contact-text">WhatsApp</div>
+                  </li>
+
+                  <!-- Instagram -->
+                  <li class="iso-pro relative cursor-pointer">
+                    <span></span><span></span><span></span>
+                    <a
+                      href="https://www.instagram.com/narwastu_mujizat/?utm_medium=copy_link"
+                      target="_blank"
+                    >
+                      <svg
+                        class="contact-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                      >
+                        <path
+                          d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.9 224.1 370.9 339 319.6 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                        />
+                      </svg>
+                    </a>
+                    <div class="contact-text">Instagram</div>
+                  </li>
+
+                  <!-- YouTube -->
+                  <li class="iso-pro relative cursor-pointer">
+                    <span></span><span></span><span></span>
+                    <a
+                      href="https://www.youtube.com/channel/UCSH44SW6JQyqU5ohwG-oqbA"
+                      target="_blank"
+                    >
+                      <svg
+                        class="contact-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 576 512"
+                      >
+                        <path
+                          d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.5-48.6C465.5 64 288 64 288 64S110.5 64 74.8 75.5c-23.7 6.3-42.2 24.9-48.5 48.6C16 160.9 16 256.1 16 256.1s0 95.2 10.3 132c6.3 23.7 24.8 42.3 48.5 48.6C110.5 448 288 448 288 448s177.5 0 213.2-11.5c23.7-6.3 42.2-24.9 48.5-48.6 10.3-36.8 10.3-132 10.3-132s0-95.2-10.3-132zM232 338.5V173.7l142.7 82.4-142.7 82.4z"
+                        />
+                      </svg>
+                    </a>
+                    <div class="contact-text">YouTube</div>
+                  </li>
+
+                  <!-- Email -->
+                  <li class="iso-pro relative cursor-pointer">
+                    <span></span><span></span><span></span>
+                    <a
+                      href="mailto:gbinarwastumujizat@gmail.com"
+                      target="_blank"
+                    >
+                      <svg
+                        class="contact-svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                      >
+                        <path
+                          d="M502.3 190.8 327.4 338c-15.9 13.2-39.6 13.2-55.5 0L9.7 190.8C3.9 186.1 0 178.9 0 171V48c0-26.5 21.5-48 48-48h416c26.5 0 48 21.5 48 48v123c0 7.9-3.9 15.1-9.7 19.8zM464 64H48v-.02L256 230.6 464 64zM0 229.3V464c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V229.3L327.4 377.1c-31.8 26.4-79 26.4-110.8 0L0 229.3z"
+                        />
+                      </svg>
+                    </a>
+                    <div class="contact-text">Email</div>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="w-auto flex flex-col justify-between py-4 text-primary"
+              >
+                <div class="ml-4">
+                  <h4 class="font-semibold">Alamat</h4>
+                  <p class="text-primary">
+                    Jalan Palem II TD no.32, Surabaya 61256
+                  </p>
+                </div>
+
+                <div class="ml-4">
+                  <h4 class="font-semibold">WhatsApp</h4>
+                  <p class="text-primary">+62 818-0303-1420</p>
+                </div>
+
+                <div class="ml-4">
+                  <h4 class="font-semibold">Instagram</h4>
+                  <p class="text-primary">@narwastu_mujizat</p>
+                </div>
+
+                <div class="ml-4">
+                  <h4 class="font-semibold">Youtube</h4>
+                  <p class="text-primary">Narwastu Mujizat</p>
+                </div>
+
+                <div class="ml-4">
+                  <h4 class="font-semibold">Email</h4>
+                  <p class="text-primary">gbinarwastumujizat@gmail.com</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Maps -->
+            <div
+              class="bg-gray-200 h-64 rounded-lg flex items-center justify-center"
+            >
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.1130951820523!2d112.7696237!3d-7.341194899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fad3e2b90921%3A0x5be6557f9b3749d6!2sGBI%20Narwastu%20Mujizat!5e0!3m2!1sid!2sid!4v1758900868896!5m2!1sid!2sid"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Form Kontak -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-6 text-primary">
+              Hubungi Kami
+            </h3>
+            <form class="contact-form space-y-6">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-primary mb-2"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full px-4 py-3 rounded-lg text-primary"
+                    placeholder="Masukkan nama lengkap"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-primary mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full px-4 py-3 rounded-lg text-primary"
+                    placeholder="nama@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-primary mb-2"
+                  >Nomor Telepon</label
+                >
+                <input
+                  type="tel"
+                  class="w-full px-4 py-3 rounded-lg text-primary"
+                  placeholder="+62 812-3456-7890"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-primary mb-2"
+                  >Kategori</label
+                >
+                <select class="w-full px-4 py-3 rounded-lg text-primary">
+                  <option class="!bg-primary !text-[#F9F6EE]" value="konseling">
+                    Konseling Rohani
+                  </option>
+                  <option class="!bg-primary !text-[#F9F6EE]" value="doa">
+                    Permohonan Doa
+                  </option>
+                  <option class="!bg-primary !text-[#F9F6EE]" value="pelayanan">
+                    Pertanyaan Pelayanan
+                  </option>
+                  <option
+                    class="!bg-primary !text-[#F9F6EE]"
+                    value="keanggotaan"
+                  >
+                    Keanggotaan Gereja
+                  </option>
+                  <option class="!bg-primary !text-[#F9F6EE]" value="umum">
+                    Pertanyaan Umum
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-primary mb-2"
+                  >Pesan</label
+                >
+                <textarea
+                  rows="5"
+                  class="w-full px-4 py-3 rounded-lg text-primary"
+                  placeholder="Tuliskan pesan atau permohonan doa Anda..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-primary text-[#F9F6EE] py-3 px-6 rounded-lg font-semibold border-2 border-transparent hover:bg-transparent hover:text-primary hover:border-2 hover:border-primary transition-all duration-300"
+              >
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-[#F9F6EE] py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+              >
+                <span class="text-[#F9F6EE] font-bold text-lg">B</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold">GBI Narwastu Mujizat</h3>
+              </div>
+            </div>
+            <p class="text-[#F9F6EE] text-sm mb-4">
+              "Jadilah pribadi yang dapat dipercaya oleh Tuhan"
+            </p>
+            <p class="text-[#F9F6EE] text-xs">Melayani sejak 10 Agustus 2004</p>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Jadwal Ibadah</h4>
+            <ul class="space-y-2 text-sm text-[#F9F6EE]">
+              <li>Doa Fajar setiap hari 03:45 WIB</li>
+              <li>Doa Malam Senin - Jumat</li>
+              <li>YTG: Sabtu 16:30 WIB</li>
+              <li>Ibadah Raya: Minggu 10:00 WIB</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Pelayanan</h4>
+            <ul class="space-y-2 text-sm text-[#F9F6EE]">
+              <li>Pengajaran & Khotbah</li>
+              <li>Pendalaman Alkitab</li>
+              <li>Pembinaan Anak Muda</li>
+              <li>Konseling Rohani</li>
+              <li>Kesaksian Jemaat</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+            <ul class="space-y-2 text-sm text-[#F9F6EE]">
+              <li>Jl. Palem II TD no.32</li>
+              <li>Wadungasri, Waru, Sidoarjo</li>
+              <li>WA: +62 818-0303-1420</li>
+              <li>Email: gbinarwastumujizat@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-[#F9F6EE] text-sm mb-4 md:mb-0">
+              &copy; 2025 GBI Narwastu Mujizat. All rights reserved.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 7.20 0 12 0 12s0 4.80.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 16.80 24 12 24 12s0-4.80-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.083.402-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- aos -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- lenis scroll -->
+    <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+
+    <!-- gsap -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+      let lastScrollTop = 0;
+      const navbar = document.getElementById("navbar");
+      const scrollThreshold = 10;
+
+      window.addEventListener("scroll", function () {
+        const currentScroll =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (Math.abs(currentScroll - lastScrollTop) < scrollThreshold) {
+          return;
+        }
+
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+          navbar.classList.add("nav-hidden");
+        } else {
+          navbar.classList.remove("nav-hidden");
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth Scrolling for Navigation Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu if open
+            mobileMenu.classList.add("hidden");
+          }
+        });
+      });
+
+      // Tab Functionality for Documentation Section
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabName = button.getAttribute("data-tab");
+
+          // Reset semua button & content
+          tabButtons.forEach((btn) => {
+            btn.classList.remove(
+              "active",
+              "bg-primary",
+              "text-[#F9F6EE]",
+              "hover:bg-[#E2E0D8]"
+            );
+            btn.classList.add("text-primary", "hover:bg-[#E2E0D8]");
+          });
+          tabContents.forEach((content) => content.classList.add("hidden"));
+
+          // Aktifkan button yang diklik
+          button.classList.add("active", "bg-primary", "text-[#F9F6EE]");
+          button.classList.remove("text-primary", "hover:bg-[#E2E0D8]");
+
+          // Tampilkan tab content sesuai data-tab
+          document.getElementById(tabName).classList.remove("hidden");
+        });
+      });
+
+      // Navbar Active State on Scroll
+      window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("bg-[#F9F6EE]");
+          // link.classList.add("text-[#F9F6EE]");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("bg-[#F9F6EE]", "bg-opacity-20");
+            // link.classList.remove("text-[#F9F6EE]");
+          }
+        });
+      });
+
+      // Form Submission Handler
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Terima kasih! Pesan Anda telah dikirim. Kami akan segera menghubungi Anda."
+        );
+      });
+
+      // Add some interactive hover effects
+      document.querySelectorAll(".hover\\:shadow-lg").forEach((element) => {
+        element.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-2px)";
+        });
+        element.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+        });
+      });
+
+      // Lazy loading animation for sections
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Add CSS for fade-in animation
+      // const style = document.createElement("style");
+      // style.textContent = `
+      //       @keyframes fadeIn {
+      //           from { opacity: 0; transform: translateY(20px); }
+      //           to { opacity: 1; transform: translateY(0); }
+      //       }
+      //       .animate-fade-in {
+      //           animation: fadeIn 0.8s ease-out;
+      //       }
+      //   `;
+      // document.head.appendChild(style);
+    </script>
+
+    <script>
+      // AOS.init({
+      //     once: true,
+      // });
+
+      const lenis = new Lenis();
+
+      const scrollAreas = document.querySelectorAll(".scrollable");
+
+      scrollAreas.forEach((area) => {
+        area.addEventListener("wheel", (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    </script>
+  </body>
+</html>
