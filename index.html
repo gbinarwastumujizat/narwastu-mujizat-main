@@ -464,10 +464,73 @@
           transform: translateY(0em);
         }
       }
+
+      @media (min-width: 700px) and (max-width: 950px) and (orientation: landscape) {
+        .nav-link {
+          font-size: 0.75rem !important;
+          padding: 0.4rem !important;
+        }
+
+        .logo {
+          width: 1.6rem !important;
+          height: 1.6rem !important;
+        }
+
+        .toggleSwitch {
+          width: 1.6rem !important;
+          height: 1.6rem !important;
+        }
+
+        .hero-text {
+          font-size: 3.5rem !important;
+          margin-bottom: 0rem !important;
+        }
+
+        .hero-button {
+          flex-direction: row !important;
+        }
+      }
+
+      @media (max-width: 700px) and (orientation: landscape) {
+        .hero-container {
+          justify-content: start !important;
+        }
+
+        .hero-text {
+          font-size: 3rem !important;
+          margin-bottom: 0rem !important;
+          margin-top: 4.5rem !important;
+        }
+
+        .hero-secondary-text {
+          font-size: 1.5rem !important;
+        }
+
+        .hero-button {
+          flex-direction: row !important;
+        }
+      }
+
+      @media (min-width: 700px) and (max-width: 830px) and (orientation: portrait) {
+        .nav-link {
+          font-size: 0.7rem !important;
+          padding: 0.3rem !important;
+        }
+
+        .logo {
+          width: 1.6rem !important;
+          height: 1.6rem !important;
+        }
+
+        .toggleSwitch {
+          width: 1.6rem !important;
+          height: 1.6rem !important;
+        }
+      }
     </style>
   </head>
   <body class="">
-    <div class="main !fixed z-[500] loader-all bg-primary w-screen h-screen transition-all">
+    <!-- <div class="main !fixed z-[500] loader-all bg-primary w-screen h-screen transition-all">
       <div class="up">
         <div class="loaders">
           <div class="loader"></div>
@@ -511,7 +574,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <main class="main-content">
       <audio id="myAudio" autoplay loop>
@@ -526,11 +589,9 @@
         <div class="mx-auto px-4">
           <div class="flex justify-between items-center w-full py-4">
             <div class="flex items-center space-x-3">
-              <div
-                class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
-              >
-                <span class="text-[#F9F6EE] font-bold text-lg">B</span>
-              </div>
+              <a href="#beranda">
+                <img src="asset/logo.png" class="logo w-12 h-12" />
+              </a>
               <input id="checkboxInput" type="checkbox" />
               <label
                 class="toggleSwitch relative w-10 h-10 flex items-center justify-center"
@@ -590,45 +651,45 @@
             </div>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6">
+            <div class="dekstop-nav hidden md:flex space-x-6">
               <a
                 href="#beranda"
-                class="nav-link rounded-2xl text-[#F9F6EE] px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Beranda</a
               >
               <a
                 href="#tentang"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Tentang Kami</a
               >
               <a
                 href="#jadwal"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Jadwal</a
               >
               <a
                 href="#pelayanan"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Pelayanan</a
               >
               <a
-                href="#artikel"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                href="article.html"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Artikel</a
               >
               <a
                 href="#kesaksian"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Kesaksian</a
               >
               <a
                 href="#dokumentasi"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Dokumentasi</a
               >
               <a
                 href="#kontak"
-                class="nav-link text-[#F9F6EE] rounded-2xl px-5 py-4 font-medium"
+                class="nav-link text-[#F9F6EE] rounded-2xl px-2 py-4 text-[0.9rem] xl:px-5 xl:py-4 font-medium"
                 >Kontak</a
               >
             </div>
@@ -702,32 +763,34 @@
 
       <!-- Hero Section / Beranda -->
       <section id="beranda" class="relative h-screen text-[#F9F6EE]">
-        <video
+        <!-- <video
           class="absolute top-0 left-0 w-full h-full object-cover"
           src="asset/hero-video.webm"
           autoplay
           loop
           muted
           loading="lazy"
-        ></video>
+        ></video> -->
         <div
           class="absolute top-0 left-0 w-full h-full bg-black opacity-60"
         ></div>
-        <div class="relative max-w-screen mx-auto px-4 py-20">
+        <div class="relative max-w-screen mx-auto px-4">
           <div
-            class="flex flex-col items-center justify-center h-screen md:block"
+            class="hero-container flex flex-col items-center justify-center h-screen"
           >
             <h1
-              class="lugrasimo-regular text-center text-[3rem] mb-10 md:mb-0 md:text-[10vw] max-w-full break-words font-bold"
+              class="hero-text lugrasimo-regular text-center text-[3rem] mb-10 md:mb-0 md:text-[10vw] max-w-full break-words font-bold"
             >
               GBI Narwastu<br />Mujizat
             </h1>
-            <p class="relative text-xl md:text-2xl mt-4 mb-8 z-[2] text-center">
+            <p
+              class="hero-second-text relative text-xl md:text-2xl mt-4 mb-8 z-[2] text-center"
+            >
               "Jadilah pribadi yang dapat dipercaya oleh Tuhan"
             </p>
 
             <div
-              class="relative flex flex-col md:flex-row gap-4 justify-center z-[2]"
+              class="hero-button relative flex flex-col md:flex-row gap-4 justify-center z-[2]"
             >
               <a
                 href="#jadwal"
@@ -872,12 +935,12 @@
                 >
                   Gembala Sidang
                 </h4>
-                <div class="text-center mb-4">
-                  <div
-                    class="w-32 h-32 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center"
-                  >
-                    <span class="text-[#F9F6EE] text-4xl font-bold">DH</span>
-                  </div>
+                <div class="text-center mb-4 flex flex-col items-center">
+                  <img
+                    class="w-32 h-32 object-cover rounded-full border-2 border-[#F9F6EE]"
+                    src="asset/pp.jpeg"
+                    alt=""
+                  />
                   <h5 class="text-lg text-[#F9F6EE] font-semibold">
                     Pdt. Dr. David Harahap, S.E, M.Th
                   </h5>
@@ -1299,7 +1362,7 @@
           <!-- Fokus Anak Muda -->
           <div class="bg-[#f9f6ee] p-8 rounded-lg shadow-lg">
             <h3 class="text-2xl font-semibold mb-6 text-center text-primary">
-              Fokus Pelayanan Anak Muda
+              Youth True Generation
             </h3>
             <div class="grid md:grid-cols-2 gap-8 items-center">
               <div>
@@ -1330,194 +1393,24 @@
       </section>
 
       <!-- Artikel & Renungan -->
-      <section id="artikel" class="py-16">
-        <div class="max-w-6xl mx-auto px-4">
+      <section id="artikel" class="py-16 bg-[#F9F6EE]">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+          <!-- buatkan tombol menuju page artikel -->
           <h2
-            class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#F9F6EE]"
+            class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary"
           >
-            Artikel & Renungan
+            Artikel dan Renungan
           </h2>
+          <p class="text-center text-primary mb-12">
+            Berbagi pengetahuan dan pengalaman Tuhan dalam hidup kita
+          </p>
 
-          <div class="grid md:grid-cols-3 gap-8">
-            <!-- Artikel Gereja -->
-            <div class="bg-[#F9F6EE] p-6 rounded-lg">
-              <h3 class="text-xl font-semibold mb-4 text-primary">
-                Artikel Gereja
-              </h3>
-              <div
-                class="scrollable max-h-screen space-y-4 pr-4 overflow-y-scroll scrollbar-blue"
-              >
-                <article
-                  class="article-card p-4 rounded shadow-sm text-primary"
-                >
-                  <h4 class="font-semibold mb-2">
-                    Menjadi Pribadi yang Dipercaya Tuhan
-                  </h4>
-                  <p class="text-sm mb-2">25 September 2024</p>
-                  <p class="text-sm">
-                    Bagaimana kita dapat membangun integritas dan kepercayaan
-                    dalam kehidupan sehari-hari...
-                  </p>
-                  <a
-                    href="#"
-                    class="text-primary text-sm font-medium hover:underline"
-                    >Baca Selengkapnya</a
-                  >
-                </article>
-                <article
-                  class="article-card p-4 rounded shadow-sm text-primary"
-                >
-                  <h4 class="font-semibold mb-2">
-                    Peran Gereja di Era Digital
-                  </h4>
-                  <p class="text-sm mb-2">20 September 2024</p>
-                  <p class="text-sm">
-                    Tantangan dan peluang gereja dalam melayani di zaman
-                    teknologi modern...
-                  </p>
-                  <a
-                    href="#"
-                    class="text-primary text-sm font-medium hover:underline"
-                    >Baca Selengkapnya</a
-                  >
-                </article>
-                <article
-                  class="article-card p-4 rounded shadow-sm text-primary"
-                >
-                  <h4 class="font-semibold mb-2">
-                    Membangun Persatuan dalam Perbedaan
-                  </h4>
-                  <p class="text-sm mb-2">15 September 2024</p>
-                  <p class="text-sm">
-                    Pentingnya kesatuan bangsa dalam keberagaman budaya dan
-                    agama...
-                  </p>
-                  <a href="#" class="text-sm font-medium hover:underline"
-                    >Baca Selengkapnya</a
-                  >
-                </article>
-
-                <article
-                  class="article-card p-4 rounded shadow-sm text-primary"
-                >
-                  <h4 class="font-semibold mb-2">
-                    Membangun Persatuan dalam Perbedaan
-                  </h4>
-                  <p class="text-sm mb-2">15 September 2024</p>
-                  <p class="text-sm">
-                    Pentingnya kesatuan bangsa dalam keberagaman budaya dan
-                    agama...
-                  </p>
-                  <a href="#" class="text-sm font-medium hover:underline"
-                    >Baca Selengkapnya</a
-                  >
-                </article>
-              </div>
-            </div>
-
-            <!-- Renungan -->
-            <div
-              class="bg-primary text-[#F9F6EE] p-6 rounded-lg text-[#F9F6EE]"
-            >
-              <h3 class="text-xl font-semibold mb-4">Renungan Mingguan</h3>
-              <div
-                class="scrollable space-y-4 max-h-screen pr-4 overflow-y-scroll"
-              >
-                <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
-                  <h4 class="font-semibold mb-2">Hidup dalam Kebenaran</h4>
-                  <p class="text-sm text-blue-100 mb-2">Yohanes 8:32</p>
-                  <p class="text-sm">
-                    "Dan kamu akan mengetahui kebenaran, dan kebenaran itu akan
-                    memerdekakan kamu."
-                  </p>
-                </div>
-                <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
-                  <h4 class="font-semibold mb-2">Menjadi Terang Dunia</h4>
-                  <p class="text-sm text-blue-100 mb-2">Matius 5:14</p>
-                  <p class="text-sm">
-                    "Kamu adalah terang dunia. Kota yang terletak di atas gunung
-                    tidak mungkin tersembunyi."
-                  </p>
-                </div>
-                <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
-                  <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
-                  <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
-                  <p class="text-sm">
-                    "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
-                  </p>
-                </div>
-                <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
-                  <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
-                  <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
-                  <p class="text-sm">
-                    "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
-                  </p>
-                </div>
-                <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
-                  <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
-                  <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
-                  <p class="text-sm">
-                    "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
-                  </p>
-                </div>
-                <div class="border-l-4 border-[#F9F6EE] p-4 card-bg-primary">
-                  <h4 class="font-semibold mb-2">Kasih yang Sejati</h4>
-                  <p class="text-sm text-blue-100 mb-2">1 Korintus 13:4-5</p>
-                  <p class="text-sm">
-                    "Kasih itu sabar; kasih itu murah hati; ia tidak cemburu..."
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dialog Iman -->
-            <div class="bg-green-50 p-6 rounded-lg">
-              <h3 class="text-xl font-semibold mb-4 text-green-800">
-                Dialog Iman
-              </h3>
-              <div class="space-y-4">
-                <div class="bg-white p-4 rounded shadow-sm">
-                  <h4 class="font-semibold mb-2 text-green-700">
-                    Menjadi Saksi Kristus di Era Digital
-                  </h4>
-                  <p class="text-sm text-primary mb-2">
-                    Bagaimana cara efektif bersaksi melalui media sosial dan
-                    teknologi modern?
-                  </p>
-                  <span
-                    class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded"
-                    >Diskusi Aktif</span
-                  >
-                </div>
-                <div class="bg-white p-4 rounded shadow-sm">
-                  <h4 class="font-semibold mb-2 text-green-700">
-                    Kesatuan Bangsa dan Iman
-                  </h4>
-                  <p class="text-sm text-primary mb-2">
-                    Peran umat Kristiani dalam menjaga persatuan Indonesia di
-                    tengah keberagaman.
-                  </p>
-                  <span
-                    class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded"
-                    >Topik Minggu Ini</span
-                  >
-                </div>
-                <div class="bg-white p-4 rounded shadow-sm">
-                  <h4 class="font-semibold mb-2 text-green-700">
-                    Iman di Tempat Kerja
-                  </h4>
-                  <p class="text-sm text-primary mb-2">
-                    Menerapkan nilai-nilai Kristiani dalam lingkungan kerja
-                    profesional.
-                  </p>
-                  <span
-                    class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded"
-                    >Coming Soon</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
+          <a
+            href="article.html"
+            class="bg-[#F9F6EE] text-primary py-2 px-4 rounded-lg border-2 border-primary hover:bg-primary hover:text-[#F9F6EE] transition-all duration-300"
+          >
+            Baca Artikel & Renungan
+          </a>
         </div>
       </section>
 
@@ -1700,42 +1593,42 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/1.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/2.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/3.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/4.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/5.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/6.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/7.webp"
                 alt=""
               />
               <img
                 class="w-full h-full object-cover rounded-lg"
-                src="asset/profile-photo.webp"
+                src="asset/dokumentasi-foto/8.webp"
                 alt=""
               />
             </div>
@@ -2638,16 +2531,16 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <script>
-      setTimeout(() => {
-        const loader = document.querySelector(".loader-all");
+      // setTimeout(() => {
+      //   const loader = document.querySelector(".loader-all");
 
-        loader.style.transition = "opacity 0.5s ease";
-        loader.style.opacity = 0;
+      //   loader.style.transition = "opacity 0.5s ease";
+      //   loader.style.opacity = 0;
 
-        setTimeout(() => {
-          loader.style.display = "none";
-        }, 500);
-      }, 2000);
+      //   setTimeout(() => {
+      //     loader.style.display = "none";
+      //   }, 500);
+      // }, 2000);
 
       window.onload = function () {
         const checkbox = document.getElementById("checkboxInput");

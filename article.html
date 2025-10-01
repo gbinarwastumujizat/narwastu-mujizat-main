@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artikel & Renungan Mingguan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#01304F",
+              secondary: "#153C4D",
+              accent: "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(135deg, #01304f, #011929);
+      }
+
+      * {
+        scrollbar-color: #f9f6ee #01304f;
+        scroll-behavior: smooth;
+      }
+
+      .scrollbar-blue {
+        scrollbar-color: #01304f #f9f6ee !important;
+      }
+      .tab-active {
+        border-bottom: 3px solid #f9f6ee;
+        color: #f9f6ee;
+      }
+      .fade-in {
+        animation: fadeIn 0.3s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .card-bg-primary {
+        background: #012b3f;
+        background-image: linear-gradient(180deg, #011f30, #012b3f),
+          radial-gradient(circle at 50% 50%, #022536 0%, transparent 80%);
+      }
+    </style>
+  </head>
+  <body class="">
+    <!-- Main Container -->
+    <div id="mainPage" class="container mx-auto px-4 py-8 max-w-6xl">
+      <!-- Header -->
+      <a
+        href="index.html#artikel"
+        class="flex items-center text-[#F9F6EE] hover:text-[#c9b785] font-semibold transition-all duration-300"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Kembali
+      </a>
+      <header class="text-center mb-8">
+        <h1 class="text-2xl sm:text-4xl font-bold text-[#F9F6EE] mb-2 mt-6">
+          Artikel & Renungan Harian
+        </h1>
+        <p class="text-[#F9F6EE]">
+          Firman Tuhan untuk merenungkan kehidupan sehari-hari
+        </p>
+      </header>
+
+      <!-- Tab Navigation -->
+      <div class="flex justify-center mb-8 border-b border-gray-200">
+        <button
+          onclick="switchTab('artikel')"
+          id="tabArtikel"
+          class="tab-active px-8 py-3 font-semibold hover:text-[#c9b785] transition-all"
+        >
+          Artikel
+        </button>
+        <button
+          onclick="switchTab('renungan')"
+          id="tabRenungan"
+          class="px-8 py-3 font-semibold text-[#F9F6EE] hover:text-[#c9b785] transition-all"
+        >
+          Renungan Mingguan
+        </button>
+      </div>
+
+      <!-- Content Container -->
+      <div
+        id="contentContainer"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      ></div>
+    </div>
+
+    <!-- Detail Page -->
+    <div id="detailPage" class="hidden container mx-auto px-4 py-8 max-w-4xl">
+      <button
+        onclick="backToMain()"
+        class="mb-6 flex items-center text-[#F9F6EE] hover:text-[#c9b785] font-semibold"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Kembali
+      </button>
+
+      <article class="card-bg-primary rounded-lg shadow-lg p-8">
+        <div
+          id="detailCategory"
+          class="text-sm font-semibold text-[#F9F6EE] mb-2"
+        ></div>
+        <h1
+          id="detailTitle"
+          class="text-3xl font-bold text-[#F9F6EE] mb-4"
+        ></h1>
+        <div
+          id="detailMeta"
+          class="flex items-center text-[#F9F6EE] text-sm mb-6"
+        ></div>
+        <div id="detailImage" class="mb-6"></div>
+        <div
+          id="detailContent"
+          class="prose prose-lg max-w-none text-[#F9F6EE] leading-relaxed"
+        ></div>
+      </article>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-[#F9F6EE] py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+              >
+                <span class="text-[#F9F6EE] font-bold text-lg">B</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold">GBI Narwastu Mujizat</h3>
+              </div>
+            </div>
+            <p class="text-[#F9F6EE] text-sm mb-4">
+              "Jadilah pribadi yang dapat dipercaya oleh Tuhan"
+            </p>
+            <p class="text-[#F9F6EE] text-xs">Melayani sejak 10 Agustus 2004</p>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Jadwal Ibadah</h4>
+            <ul class="space-y-2 text-sm text-[#F9F6EE]">
+              <li>Doa Fajar setiap hari 03:45 WIB</li>
+              <li>Doa Malam Senin - Jumat</li>
+              <li>YTG: Sabtu 16:30 WIB</li>
+              <li>Ibadah Raya: Minggu 10:00 WIB</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Pelayanan</h4>
+            <ul class="space-y-2 text-sm text-[#F9F6EE]">
+              <li>Pengajaran & Khotbah</li>
+              <li>Pendalaman Alkitab</li>
+              <li>Pembinaan Anak Muda</li>
+              <li>Konseling Rohani</li>
+              <li>Kesaksian Jemaat</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+            <ul class="space-y-2 text-sm text-[#F9F6EE]">
+              <li>Jl. Palem II TD no.32</li>
+              <li>Wadungasri, Waru, Sidoarjo</li>
+              <li>WA: +62 818-0303-1420</li>
+              <li>Email: gbinarwastumujizat@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-[#F9F6EE] text-sm mb-4 md:mb-0">
+              &copy; 2025 GBI Narwastu Mujizat. All rights reserved.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://api.whatsapp.com/send/?phone=%2B6281803031420&text&type=phone_number&app_absent=0"
+                target="_blank"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  class="w-8 h-8 mx-auto mb-2"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M16.003 3C9.375 3 4 8.374 4 15c0 2.644.845 5.09 2.283 7.1L4 29l7.123-2.26A11.937 11.937 0 0 0 16.003 27c6.627 0 12-5.375 12-12s-5.373-12-12-12zm0 21.922a9.9 9.9 0 0 1-5.044-1.375l-.362-.215-4.23 1.344 1.383-4.126-.236-.378A9.906 9.906 0 0 1 6.101 15c0-5.466 4.438-9.903 9.902-9.903 5.466 0 9.902 4.437 9.902 9.903 0 5.466-4.437 9.922-9.902 9.922zm5.45-7.422c-.297-.149-1.758-.867-2.03-.964-.272-.099-.47-.149-.669.149-.198.297-.767.963-.94 1.162-.173.198-.347.223-.644.074-.297-.149-1.256-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.209-.242-.58-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.793.372s-1.04 1.015-1.04 2.473 1.065 2.865 1.213 3.064c.149.198 2.095 3.2 5.077 4.487.71.307 1.264.491 1.696.63.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.412.248-.694.248-1.288.173-1.412-.074-.124-.272-.198-.57-.347z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/narwastu_mujizat/?utm_medium=copy_link"
+                target="_blank"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8 mx-auto mb-2"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5ZM4.5 7.75A3.25 3.25 0 0 1 7.75 4.5h8.5a3.25 3.25 0 0 1 3.25 3.25v8.5a3.25 3.25 0 0 1-3.25 3.25h-8.5a3.25 3.25 0 0 1-3.25-3.25v-8.5ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm5.25-2.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCSH44SW6JQyqU5ohwG-oqbA"
+                target="_blank"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg
+                  class="w-8 h-8 mx-auto mb-2"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 7.20 0 12 0 12s0 4.80.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 16.80 24 12 24 12s0-4.80-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="mailto:gbinarwastumujizat@gmail.com"
+                target="_blank"
+                class="text-[#F9F6EE] hover:text-[#F9F6EE] transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-8 h-8 mx-auto mb-2"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 
+       2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 
+       2-2zm0 2v.01L12 13l8-6.99V6H4zm0 
+       12h16V8l-8 6-8-6v10z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- aos -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- lenis scroll -->
+    <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
+
+    <!-- gsap -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+      // AOS.init({
+      //     once: true,
+      // });
+
+      const lenis = new Lenis();
+
+      const scrollAreas = document.querySelectorAll(".scrollable");
+
+      scrollAreas.forEach((area) => {
+        area.addEventListener("wheel", (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    </script>
+
+    <script>
+      let artikelData = [];
+      let renunganData = [];
+      let currentTab = "artikel";
+
+      // Switch tab
+      function switchTab(tab) {
+        currentTab = tab;
+
+        const tabArtikel = document.getElementById("tabArtikel");
+        const tabRenungan = document.getElementById("tabRenungan");
+
+        if (tab === "artikel") {
+          tabArtikel.classList.add("tab-active", "text-[#F9F6EE]");
+          tabArtikel.classList.remove("text-[#F9F6EE]");
+          tabRenungan.classList.remove("tab-active", "text-[#F9F6EE]");
+          tabRenungan.classList.add("text-[#F9F6EE]");
+          renderCards(artikelData);
+        } else {
+          tabRenungan.classList.add("tab-active", "text-[#F9F6EE]");
+          tabRenungan.classList.remove("text-[#F9F6EE]");
+          tabArtikel.classList.remove("tab-active", "text-[#F9F6EE]");
+          tabArtikel.classList.add("text-[#F9F6EE]");
+          renderCards(renunganData);
+        }
+      }
+
+      // Render card
+      function renderCards(data) {
+        const container = document.getElementById("contentContainer");
+        container.innerHTML = "";
+
+        data.forEach((item) => {
+          const card = document.createElement("div");
+          card.className =
+            "card-bg-primary rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow fade-in";
+          card.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-cover">
+      <div class="p-6">
+          <div class="text-xs font-semibold text-[#F9F6EE] mb-2">${item.category}</div>
+          <h3 class="text-xl font-bold text-[#F9F6EE] mb-2">${item.title}</h3>
+          <div class="text-sm text-[#F9F6EE] mb-3">
+              <span>${item.author}</span> • <span>${item.date}</span>
+          </div>
+          <p class="text-[#F9F6EE] mb-4 line-clamp-3">${item.preview}</p>
+          <button onclick="showDetail(${item.id})" class="text-blue-400 font-semibold hover:text-blue-600 flex items-center">
+              Baca Selengkapnya
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+          </button>
+      </div>
+    `;
+          container.appendChild(card);
+        });
+      }
+
+      // Load JSON
+      Promise.all([
+        fetch("articles.json").then((res) => res.json()),
+        fetch("renungan.json").then((res) => res.json()),
+      ])
+        .then(([articles, renungan]) => {
+          artikelData = articles;
+          renunganData = renungan;
+          renderCards(artikelData);
+        })
+        .catch((err) => console.error("Gagal memuat data:", err));
+
+      // Show detail
+      function showDetail(id) {
+        const allData = [...artikelData, ...renunganData];
+        const item = allData.find((i) => i.id === id);
+
+        if (!item) return;
+
+        document.getElementById("detailCategory").textContent = item.category;
+        document.getElementById("detailTitle").textContent = item.title;
+        document.getElementById("detailMeta").innerHTML = `
+    <span class="mr-4">${item.author}</span>
+    <span>${item.date}</span>
+  `;
+        document.getElementById("detailImage").innerHTML = `
+    <img src="${item.image}" alt="${item.title}" class="w-full h-96 object-cover rounded-lg">
+  `;
+
+        const formattedContent = item.content
+          .split("\n\n")
+          .map((para) => `<p class="mb-4">${para}</p>`)
+          .join("");
+        document.getElementById("detailContent").innerHTML = formattedContent;
+
+        document.getElementById("mainPage").classList.add("hidden");
+        document.getElementById("detailPage").classList.remove("hidden");
+        document.getElementById("detailPage").classList.add("fade-in");
+
+        window.scrollTo(0, 0);
+      }
+
+      // Back to main
+      function backToMain() {
+        document.getElementById("detailPage").classList.add("hidden");
+        document.getElementById("mainPage").classList.remove("hidden");
+        window.scrollTo(0, 0);
+      }
+    </script>
+  </body>
+</html>
