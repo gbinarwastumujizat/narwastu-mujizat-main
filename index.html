@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta http-equiv="Cache-Control" content="no-store" />
-    <title>Gereja Bethel Indonesia</title>
+    <title>GBI NARWASTU MUJIZAT</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -530,7 +530,9 @@
     </style>
   </head>
   <body class="">
-    <div class="main !fixed z-[500] loader-all bg-primary w-screen h-screen transition-all">
+    <!-- <div
+      class="main !fixed z-[500] loader-all bg-primary w-screen h-screen transition-all"
+    >
       <div class="up">
         <div class="loaders">
           <div class="loader"></div>
@@ -574,7 +576,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <main class="main-content">
       <audio id="myAudio" autoplay loop>
@@ -865,8 +867,8 @@
                 Jadwal Ibadah
               </h3>
               <p class="text-primary">
-                Doa Fajar setiap hari 03:45 WIB
-                <br />Doa Malam Senin - Jumat <br />YTG setiap Sabtu 16:30 WIB
+                Temukan jadwal yang seusai dengan anda dan datang bersekutu
+                dengan Tuhan
               </p>
             </div>
 
@@ -2296,7 +2298,7 @@
               <h3 class="text-2xl font-semibold mb-6 text-primary">
                 Hubungi Kami
               </h3>
-              <form class="contact-form space-y-6">
+              <form id="submit-to-google-sheet" class="contact-form space-y-6">
                 <div class="grid md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-sm font-medium text-primary mb-2"
@@ -2304,6 +2306,7 @@
                     >
                     <input
                       type="text"
+                      name="nama"
                       class="w-full px-4 py-3 rounded-lg text-primary"
                       placeholder="Masukkan nama lengkap"
                     />
@@ -2314,6 +2317,7 @@
                     >
                     <input
                       type="email"
+                      name="email"
                       class="w-full px-4 py-3 rounded-lg text-primary"
                       placeholder="nama@email.com"
                     />
@@ -2326,6 +2330,7 @@
                   >
                   <input
                     type="tel"
+                    name="nomor_telepon"
                     class="w-full px-4 py-3 rounded-lg text-primary"
                     placeholder="+62 812-3456-7890"
                   />
@@ -2335,7 +2340,10 @@
                   <label class="block text-sm font-medium text-primary mb-2"
                     >Kategori</label
                   >
-                  <select class="w-full px-4 py-3 rounded-lg text-primary">
+                  <select
+                    class="w-full px-4 py-3 rounded-lg text-primary"
+                    name="kategori"
+                  >
                     <option
                       class="!bg-primary !text-[#F9F6EE]"
                       value="konseling"
@@ -2369,6 +2377,7 @@
                   >
                   <textarea
                     rows="5"
+                    name="pesan"
                     class="w-full px-4 py-3 rounded-lg text-primary"
                     placeholder="Tuliskan pesan atau permohonan doa Anda..."
                   ></textarea>
@@ -2529,6 +2538,20 @@
     <!-- gsap -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!-- form -->
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzJy96kRGOzx9Asis2pvduccgzM9_EIImmJEwuq7YXVCgyG1AolxDWGLExcJQvQNn8vwA/exec";
+      const form = document.forms["submit-to-google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
 
     <script>
       setTimeout(() => {
